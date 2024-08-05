@@ -10,14 +10,19 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    
+    @State private var selectedTab: Tabs = .watchNow
+    
     var body: some View {
-        VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-
-            Text("Hello, world!")
+        TabView(selection: $selectedTab) {
+            Tab("WatchNowView", systemImage: "play", value: .watchNow) {
+                WatchNowView()
+            }
+            
+            Tab("Library", systemImage: "folder.fill", value: .library) {
+                LibraryView()
+            }
         }
-        .padding()
     }
 }
 
