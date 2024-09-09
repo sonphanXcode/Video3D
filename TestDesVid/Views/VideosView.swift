@@ -16,6 +16,9 @@ struct VideosView: View {
     var body: some View {
         VStack {
             VideoPlayer(player: player)
+                .immersiveEnvironmentPicker {
+                    ImmersiveEnviromentPickerView()
+                }
             Button {
                 isPlaying ? player.pause() : player.play()
                 isPlaying.toggle()
@@ -40,4 +43,20 @@ struct VideosView: View {
 
 #Preview {
     VideosView(player: AVPlayer(url: Bundle.main.url(forResource: "video1", withExtension: "mp4")!), isPlaying: false)
+}
+
+
+struct PlayerView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some AVPlayerViewController {
+        let controller = AVPlayerViewController()
+        controller.player = AVPlayer()
+        let url = Bundle.main.url(forResource: "StarshipTest", withExtension: "mp4")!
+        controller.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
+        
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        //
+    }
 }

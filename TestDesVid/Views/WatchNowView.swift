@@ -13,18 +13,27 @@ struct WatchNowView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                VStack {
-                    HeroView()
-                        .frame(height: 500)
+                ZStack {
+                    Image("image")
+                        .resizable()
+                        .scaledToFill()
+                    VStack(alignment: .leading) {
+                        LogoView()
+                            .frame(width: 200, height: 58)
+                            .cornerRadius(30)
+                            .padding(.top, 50)
+                            .padding(.leading, 30)
+                            
+                        HeroView()
+                            .frame(height: 300)
+                            .padding(.leading, 0)
+                        VideoListView()
+//                            .buttonStyle(.plain)
+                            
+                    }
+                    .padding()
                 }
                 
-                VStack(spacing: 20) {
-                    VideoListView()
-                    
-                    CategoryListView()
-                    
-                    LibraryView()
-                }
             }
         }
     }

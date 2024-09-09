@@ -13,32 +13,76 @@ struct HeroView: View {
     @State private var playVideo: Bool = false
     
     var body: some View {
-        ZStack {
-            Image("spacex")
-                .resizable()
-                .scaledToFill()
+            
             HStack {
                 VStack(alignment: .leading) {
-                    Text("SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology,...")
-                        .frame(width: 500)
-                        .font(.title3)
-                        .foregroundStyle(Color(.white))
+                    
+                    Text("Lorem ipsum dolor sit")
+                        .frame(width: 562, height: 56)
+                        .font(.system(size: 50))
                         .bold()
-                        .padding(.leading, 50)
+                        .foregroundStyle(Color(.white))
+                        .padding(.leading, -28)
+                    Text("Lorem ipsum dolor sit amet consectetur. Et lacinia facilisi tortor porta praesent. Quisque orci mattis molestie pellentesque et semper etiam nibh pharetra. ")
+                        .frame(width: 500)
+                        .font(.headline)
+                        .foregroundStyle(Color(.white))
+                    //                        .padding(.leading, 30)
                     
                     NavigationLink(destination: {
-                        VideosView()
+                        PlayerView()
+                            .immersiveEnvironmentPicker {
+                                ImmersiveEnviromentPickerView()
+                            }
                     }, label: {
-                        Image(systemName: "play")
+                        HStack {
+                            Text("Play now")
+                                .font(.system(.body, design: .rounded)).bold()
+                            Image(systemName: "play")
+                                .bold()
+                        }
+                        .frame(width: 179, height: 44)
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                        .cornerRadius(30)
+                        
                     })
-                    .padding(.leading, 70)
+                    .buttonStyle(.plain)
+                    .padding(.leading, 20)
+                    .padding(.top, 20)
                 }
                 Spacer()
             }
-        }
+            .padding()
     }
 }
 
 #Preview {
     HeroView()
+}
+
+struct BtnPlayView: View {
+    var body: some View {
+        ZStack {
+            Color.red
+                .ignoresSafeArea()
+            HStack {
+                Text("Play Now")
+                Image(systemName: "play")
+            }
+        }
+    }
+}
+
+struct LogoView: View {
+    var body: some View {
+        ZStack {
+            Color.white
+                .ignoresSafeArea()
+            Image("image1")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 129, height: 24)
+        }
+    }
 }

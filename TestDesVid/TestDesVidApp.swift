@@ -6,12 +6,39 @@
 //
 
 import SwiftUI
+import Observation
 
 @main
 struct TestDesVidApp: App {
+    
+    @State private var viewModel = ViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(viewModel)
         }
+        
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
     }
+}
+
+@Observable
+class ViewModel {
+    let listVietJet: [VietJetList] = [
+                                    VietJetList(image: "image2", description: "Lorem ipsum dolor "),
+                                    VietJetList(image: "image3", description: "Lorem ipsum dolor sit amet consectetur."),
+                                    VietJetList(image: "image4", description: "Lorem"),
+                                    VietJetList(image: "image4", description: "Lorem ipsum dolor sit amet consectetur."),
+                                    VietJetList(image: "image4", description: "Lorem ipsum dolor sit amet consectetur.")
+                                    ]
+}
+
+struct VietJetList: Identifiable {
+    var id: UUID = UUID()
+    var image: String
+    var description: String
 }
