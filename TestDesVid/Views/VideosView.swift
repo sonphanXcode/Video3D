@@ -10,7 +10,7 @@ import AVKit
 
 struct VideosView: View {
     
-    @State var player = AVPlayer(url: Bundle.main.url(forResource: "video1", withExtension: "mp4")!)
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "VJvid1", withExtension: "mp4")!)
     @State var isPlaying: Bool = false
     
     var body: some View {
@@ -42,15 +42,18 @@ struct VideosView: View {
 }
 
 #Preview {
-    VideosView(player: AVPlayer(url: Bundle.main.url(forResource: "video1", withExtension: "mp4")!), isPlaying: false)
+    VideosView(player: AVPlayer(url: Bundle.main.url(forResource: "VJvid1", withExtension: "mp4")!), isPlaying: false)
 }
 
 
 struct PlayerView: UIViewControllerRepresentable {
+    
+    var videoString: String = "VJvid1"
+    
     func makeUIViewController(context: Context) -> some AVPlayerViewController {
         let controller = AVPlayerViewController()
         controller.player = AVPlayer()
-        let url = Bundle.main.url(forResource: "StarshipTest", withExtension: "mp4")!
+        let url = Bundle.main.url(forResource: videoString, withExtension: "mp4")!
         controller.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
         
         return controller

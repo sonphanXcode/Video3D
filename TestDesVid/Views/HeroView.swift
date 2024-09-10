@@ -11,55 +11,52 @@ import AVKit
 struct HeroView: View {
     
     @State private var playVideo: Bool = false
+    var videoString: String = "VJvid1"
     
     var body: some View {
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    
-                    Text("Lorem ipsum dolor sit")
-                        .frame(width: 562, height: 56)
-                        .font(.system(size: 50))
-                        .bold()
-                        .foregroundStyle(Color(.white))
-                        .padding(.leading, -28)
-                    Text("Lorem ipsum dolor sit amet consectetur. Et lacinia facilisi tortor porta praesent. Quisque orci mattis molestie pellentesque et semper etiam nibh pharetra. ")
-                        .frame(width: 500)
-                        .font(.headline)
-                        .foregroundStyle(Color(.white))
-                    //                        .padding(.leading, 30)
-                    
-                    NavigationLink(destination: {
-                        PlayerView()
-                            .immersiveEnvironmentPicker {
-                                ImmersiveEnviromentPickerView()
-                            }
-                    }, label: {
-                        HStack {
-                            Text("Play now")
-                                .font(.system(.body, design: .rounded)).bold()
-                            Image(systemName: "play")
-                                .bold()
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Lorem ipsum dolor sit")
+                    .frame(width: 562, height: 56)
+                    .font(.system(size: 50))
+                    .bold()
+                    .foregroundStyle(Color(.white))
+                    .padding(.leading, -28)
+                Text("Lorem ipsum dolor sit amet consectetur. Et lacinia facilisi tortor porta praesent. Quisque orci mattis molestie pellentesque et semper etiam nibh pharetra. ")
+                    .frame(width: 500)
+                    .font(.headline)
+                    .foregroundStyle(Color(.white))
+                NavigationLink(destination: {
+                    PlayerView(videoString: videoString)
+                        .immersiveEnvironmentPicker {
+                            ImmersiveEnviromentPickerView()
                         }
-                        .frame(width: 179, height: 44)
-                        .foregroundColor(.white)
-                        .background(Color.red)
-                        .cornerRadius(30)
-                        
-                    })
-                    .buttonStyle(.plain)
-                    .padding(.leading, 20)
-                    .padding(.top, 20)
-                }
-                Spacer()
+//                        .ignoresSafeArea()
+                }, label: {
+                    HStack {
+                        Text("Play now")
+                            .font(.system(.body, design: .rounded)).bold()
+                        Image(systemName: "play")
+                            .bold()
+                    }
+                    .frame(width: 179, height: 44)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(30)
+                })
+                .buttonStyle(.plain)
+                .padding(.leading, 20)
+                .padding(.top, 20)
             }
-            .padding()
+            Spacer()
+        }
+        .padding()
     }
 }
 
-#Preview {
-    HeroView()
-}
+//#Preview {
+//    HeroView(videoString: "VJvid1")
+//}
 
 struct BtnPlayView: View {
     var body: some View {

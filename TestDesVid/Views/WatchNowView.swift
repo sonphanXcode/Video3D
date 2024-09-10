@@ -9,12 +9,15 @@ import SwiftUI
 
 struct WatchNowView: View {
     
+    @State private var videoString: String = "VJvid1"
+    @Environment(ViewModel.self) private var viewModel
     
     var body: some View {
+        @Bindable var viewModel = viewModel
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 ZStack {
-                    Image("image")
+                    Image("photo-3-1 2")
                         .resizable()
                         .scaledToFill()
                     VStack(alignment: .leading) {
@@ -24,7 +27,7 @@ struct WatchNowView: View {
                             .padding(.top, 50)
                             .padding(.leading, 30)
                             
-                        HeroView()
+                        HeroView(videoString: viewModel.videoString)
                             .frame(height: 300)
                             .padding(.leading, 0)
                         VideoListView()

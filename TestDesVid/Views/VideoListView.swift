@@ -10,6 +10,8 @@ struct VideoListView: View {
     
     @Environment(ViewModel.self) private var viewModel
     
+    @State private var videoString: String = "VJvid1"
+    
     var body: some View {
         @Bindable var viewModel = viewModel
         Section {
@@ -18,8 +20,7 @@ struct VideoListView: View {
                     Group {
                         ForEach(viewModel.listVietJet) { model in
                             NavigationLink {
-                                HeroView()
-                                    .frame(width: .infinity, height: .infinity)
+                                DetailView(videoString: model.videoString)
                             } label: {
                                 VStack {
                                     Image(model.image)
@@ -68,5 +69,23 @@ struct ItemView: View {
                 .font(.system(size: 22))
                 .bold()
         }
+    }
+}
+
+struct DetailView: View {
+    
+    var videoString: String
+    @Environment(ViewModel.self) private var viewModel
+    
+    var body: some View {
+        @Bindable var viewModel = viewModel
+        ZStack {
+            Image("photo-3-1 2")
+                .resizable()
+                .scaledToFill()
+            HeroView(videoString: videoString)
+        }
+        .ignoresSafeArea()
+        .frame(width: .infinity, height: .infinity)
     }
 }

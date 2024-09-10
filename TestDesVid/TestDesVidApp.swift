@@ -28,12 +28,16 @@ struct TestDesVidApp: App {
 
 @Observable
 class ViewModel {
+    
+    var videoString: String = "VJvid1"
+    
     let listVietJet: [VietJetList] = [
                                     VietJetList(image: "image2", description: "Lorem ipsum dolor "),
-                                    VietJetList(image: "image3", description: "Lorem ipsum dolor sit amet consectetur."),
+                                    VietJetList(image: "image3", description: "Lorem ipsum dolor sit amet consectetur.", videoString: "VJvid2"),
                                     VietJetList(image: "image4", description: "Lorem"),
-                                    VietJetList(image: "image4", description: "Lorem ipsum dolor sit amet consectetur."),
-                                    VietJetList(image: "image4", description: "Lorem ipsum dolor sit amet consectetur.")
+                                    VietJetList(image: "Banner 14 1", description: "Lorem ipsum dolor sit amet consectetur."),
+                                    VietJetList(image: "Banner 8 1", description: "Lorem ipsum dolor sit amet consectetur."),
+                                    VietJetList(image: "banner 6", description: "Lorem ipsum dolor sit amet consectetur.")
                                     ]
 }
 
@@ -41,4 +45,5 @@ struct VietJetList: Identifiable {
     var id: UUID = UUID()
     var image: String
     var description: String
+    var videoString: String = "VJvid1"
 }
